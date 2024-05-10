@@ -78,11 +78,5 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 export const signInUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
-  return signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const { user } = userCredential;
-    })
-    .catch((error) => {
-      console.log('error logging in', error.message);
-    });
+  return signInWithEmailAndPassword(auth, email, password);
 };
