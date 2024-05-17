@@ -24,7 +24,11 @@
   }
 
   button {
-    font-size: 13px;
+    font-size: 12px;
     margin-top: auto;
+
+    &:hover {
+      font-size: 12px;
+    }
   }
 }
