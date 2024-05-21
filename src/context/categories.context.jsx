@@ -12,7 +12,6 @@ export const CategoriesContext = createContext({
 // products provider component
 export const CategoriesProvider = ({ children }) => {
   const [categoriesMap, setCategoriesMap] = useState({});
-  console.log(categoriesMap);
 
   useEffect(() => {
     // we create our own, separate async callback function inside the useEffect hook...
