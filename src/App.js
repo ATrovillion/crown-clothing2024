@@ -11,16 +11,21 @@ import {
   createuserDocumentFromAuth,
   onAuthStateChangedListener,
 } from './utils/firebase/firebase.utils';
-import { setCurrentUser } from './store/user/user.action';
+import { setCurrentUser } from './store/user/user.slice';
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createuserDocumentFromAuth(user);
       }
-      dispatch(setCurrentUser(user));
+      // pick out needed user values from UserImpl class object to avoid non-serializable error message from default middleware
+      const pickedUser =
+        user && (({ accessToken, email }) => ({ accessToken, email }))(user);
+      console.log(setCurrentUser(pickedUser));
+      dispatch(setCurrentUser(pickedUser));
     });
 
     return unsubscribe;

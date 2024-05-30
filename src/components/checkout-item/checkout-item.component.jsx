@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   CheckoutItemContainer,
   ImageContainer,
@@ -15,21 +15,20 @@ import {
   addItemToCart,
   decrementItemInCart,
   deleteCartItem,
-} from '../../store/cart/cart.action';
+} from '../../store/cart/cart.reducer';
 
 const CheckoutItem = ({ cartItem }) => {
   const dispatch = useDispatch();
   const { name, imageUrl, price, quantity } = cartItem;
-  const cartItems = useSelector(selectCartItems);
 
   const incrementHandler = () => {
-    dispatch(addItemToCart(cartItems, cartItem));
+    dispatch(addItemToCart(cartItem));
   };
   const decrementHandler = () => {
-    dispatch(decrementItemInCart(cartItems, cartItem));
+    dispatch(decrementItemInCart(cartItem));
   };
   const deleteItemHandler = () => {
-    dispatch(deleteCartItem(cartItems, cartItem));
+    dispatch(deleteCartItem(cartItem));
   };
   return (
     <CheckoutItemContainer>
