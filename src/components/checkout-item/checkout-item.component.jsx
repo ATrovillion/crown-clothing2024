@@ -15,7 +15,7 @@ import {
   addItemToCart,
   decrementItemInCart,
   deleteCartItem,
-} from '../../store/cart/cart.reducer';
+} from '../../store/cart/cart.slice';
 
 const CheckoutItem = ({ cartItem }) => {
   const dispatch = useDispatch();
