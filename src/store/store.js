@@ -1,19 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import { compose, createStore, applyMiddleware } from 'redux';
-// import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import logger from 'redux-logger';
-
-// import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './root-reducer';
 
-// // create config object to tell redux what we want to persist
-// const persistConfig = {
-//   key: 'root', // persist the whole thing
-//   storage,
-//   blacklist: ['user'],
-// };
+// create config object to tell redux what we want to persist
+const persistConfig = {
+  key: 'root', // persist the whole thing
+  storage,
+  whitelist: ['cart'],
+};
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middlewares = [process.env.NODE_ENV === 'development' && logger].filter(
   Boolean,
@@ -28,11 +26,11 @@ const middlewares = [process.env.NODE_ENV === 'development' && logger].filter(
 // const composedEnhancers = composeEnhancer(applyMiddleware(...middlewares));
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }).concat(middlewares),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

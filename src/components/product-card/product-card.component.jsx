@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addItemToCart } from '../../store/cart/cart.reducer';
+import { addItemToCart } from '../../store/cart/cart.slice';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import {
   Footer,
