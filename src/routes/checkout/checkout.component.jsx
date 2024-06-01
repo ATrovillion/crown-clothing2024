@@ -5,12 +5,12 @@ import PaymentForm from '../../components/payment-form/payment-form.component';
 import { CheckoutContainer, CheckoutHeader, Total } from './checkout.styles';
 import {
   selectCartItems,
-  selectCarttotal,
+  selectCartTotal,
 } from '../../store/cart/cart.selector';
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
-  const cartTotal = useSelector(selectCarttotal);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <CheckoutContainer>
