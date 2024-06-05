@@ -16,15 +16,3 @@ export const fetchCategoriesSucess = (categoriesArray) =>
 
 export const fetchCategoriesFailed = (error) =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error);
-
-// this is our new async function (our thunk)
-export const fetchCategoriesAsync = () => async (dispatch) => {
-  dispatch(fetchCategoriesStart());
-
-  try {
-    const categoriesArray = await getCategoriesAndDocuments('categories');
-    dispatch(fetchCategoriesSucess(categoriesArray));
-  } catch (error) {
-    dispatch(fetchCategoriesFailed(error));
-  }
-};
