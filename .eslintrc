@@ -1,5 +1,10 @@
 {
-  "parser": "@babel/eslint-parser",
+   "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+   "@typescript-eslint",
+   "eslint-plugin-node",
+  ],
   "parserOptions": {
      "babelOptions": {
         "presets": ["@babel/preset-react"]

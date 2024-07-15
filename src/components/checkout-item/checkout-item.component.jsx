@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useSelector, useDispatch } from 'react-redux';
 import {
   CheckoutItemContainer,
@@ -14,7 +12,7 @@ import { selectCartItems } from '../../store/cart/cart.selector';
 import {
   addItemToCart,
   decrementItemInCart,
-  deleteCartItem,
+  clearItemFromCart,
 } from '../../store/cart/cart.action';
 
 const CheckoutItem = ({ cartItem }) => {
@@ -29,7 +27,7 @@ const CheckoutItem = ({ cartItem }) => {
     dispatch(decrementItemInCart(cartItems, cartItem));
   };
   const deleteItemHandler = () => {
-    dispatch(deleteCartItem(cartItems, cartItem));
+    dispatch(clearItemFromCart(cartItems, cartItem));
   };
   return (
     <CheckoutItemContainer>

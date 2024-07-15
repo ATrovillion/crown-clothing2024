@@ -10,7 +10,7 @@ import {
 } from '../../utils/firebase/firebase.utils';
 
 import { SignUpContainer } from './sign-up-form.styles.jsx';
-import { signUpStart } from '../../store/user/user.action.js';
+import { signUpStart } from '../../store/user/user.action.ts';
 
 const defaultFormFields = {
   displayName: '',
