@@ -1,13 +1,22 @@
-import { Link } from 'react-router-dom';
+import { FC } from 'react';
+
 import ProductCard from '../product-card/product-card.component';
+
 import {
   CategoryPreviewContainer,
   Preview,
   Title,
 } from './category-preview.styles';
 
+import { CategoryItem } from '../../store/categories/category.types';
+
+type CategoryPreviewProps = {
+  title: string;
+  products: CategoryItem[];
+}
+
 // preview for each of the categories; will live on the shop page
-const CategoryPreview = ({ title, products }) => (
+const CategoryPreview: FC<CategoryPreviewProps> = ({ title, products }) => (
   <CategoryPreviewContainer>
     <h2>
       <Title to={title}>{title.toUpperCase()}</Title>
